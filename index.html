@@ -1,0 +1,1173 @@
+<style>
+  .image-container {
+    position: relative;
+    width: 100%;
+    max-width: 4000px;
+  }
+  .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .hepta-text {
+    position: absolute;
+    top: 10%;
+    left: 4%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    font-size: 33px;
+    font-weight: 1000;
+    font-family: "Playfair Display";
+    text-align: center;
+    text-shadow: none;
+    letter-spacing: -2px;
+  }
+  .center-text {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    font-size: 98px;
+    font-weight: 900;
+    font-family: "Mukta Mahee", serif;
+    text-align: center;
+    text-shadow: none;
+    letter-spacing: -4px;
+    opacity: 0;
+    animation: popUp 0.7s ease-out forwards;
+  }
+  @keyframes popUp {
+    0% {
+      transform: translate(-50%, calc(-50% + 100px));
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
+  .first-part,
+  .second-part,
+  .colorlib,
+  .button {
+    position: absolute;
+    font-size: 30px;
+    font-family: "Inter, sans-serif";
+    text-align: center;
+    text-shadow: none;
+    letter-spacing: -1px;
+    opacity: 0;
+    animation: popUp 0.7s ease-out forwards;
+  }
+  .first-part {
+    top: 47.5%;
+    left: 36%;
+    animation-delay: 0.08s;
+    color: white;
+  }
+  .second-part {
+    top: 47.5%;
+    left: 63%;
+    animation-delay: 0.09s;
+    color: white;
+  }
+  .colorlib {
+    top: 47.5%;
+    left: 49%;
+    color: rgba(249, 248, 248, 0.44);
+    cursor: pointer;
+    animation-delay: 0.09s;
+  }
+  .colorlib:hover {
+    color: white;
+    text-decoration: underline;
+    transition: color 0.5s;
+  }
+  .button {
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 14px 28px;
+    background-color: transparent;
+    color: white;
+    height: 62px;
+    width: 205px;
+    border: 2px solid white;
+    border-radius: 4px;
+    letter-spacing: 3px;
+    font-size: 13px;
+    cursor: pointer;
+    animation-delay: 0.1s;
+  }
+  .button:hover {
+    background-color: white;
+    color: black;
+    transition: background-color 0.15s;
+  }
+  .hamburger {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 30;
+  }
+  .hamburger span {
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: white;
+    border-radius: 1px;
+    transition: 0.4s ease;
+  }
+  .hamburger span:nth-child(1) {
+    top: 0;
+  }
+  .hamburger span:nth-child(2) {
+    top: 10px;
+  }
+  .hamburger span:nth-child(3) {
+    top: 20px;
+  }
+  .fullscreen-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 20;
+  }
+  #menu-toggle:checked ~ .fullscreen-menu {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .menu-links {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  .menu-links li {
+    margin: 20px 0;
+  }
+  .menu-links a {
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    font-size: 42px;
+    color: black;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .menu-links a:hover {
+    color: #5dcbd2;
+  }
+  .menu-links .active {
+    color: #5dcbd2;
+  }
+  #menu-toggle:checked + .hamburger span {
+    background: black;
+  }
+
+  #menu-toggle:checked + .hamburger span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 10px;
+  }
+  #menu-toggle:checked + .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-toggle:checked + .hamburger span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 10px;
+  }
+  .about-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    max-width: 1200px;
+    margin: auto;
+    gap: 50px;
+    opacity: 0;
+    transform: translateY(100px);
+    animation: slideInUp 1s ease-out forwards;
+    animation-delay: 1s;
+  }
+  @keyframes slideInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .about-image img {
+    width: 570px;
+    height: 100%;
+    object-fit: cover;
+    margin-left: 30px;
+    margin-top: 60px;
+  }
+  .about-text {
+    max-width: 600px;
+  }
+  .about-text h2 {
+    font-size: 34px;
+    color: black;
+    display: inline-block;
+    padding: 10px 15px;
+    font-weight: 900;
+    margin-bottom: 20px;
+  }
+  .about-text p {
+    font-size: 18px;
+    color: #66666688;
+    line-height: 1.7;
+    font-family: Arial;
+    margin-bottom: 20px;
+    letter-spacing: 0px;
+    font-weight: 100;
+  }
+  .watch-button {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #5bc1b1;
+    text-decoration: none;
+  }
+  .watch-button span {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    margin-right: 15px;
+    position: relative;
+  }
+  .watch-button span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid #5bc1b1;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+  }
+  .watch-button:hover {
+    color: rgb(32, 104, 109);
+    transition: color 0.15s;
+  }
+  .watch-button span:hover {
+    border-color: black;
+    transition: border-color 0.15s;
+  }
+  .watch-button span:hover::after {
+    border-left-color: black;
+    transition: birder-left-color 0.15s;
+  }
+  .features-section {
+    background-color: #f9f9f9;
+    padding: 80px 20px;
+    text-align: center;
+  }
+  .features-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .features-header p {
+    font-size: 18px;
+    max-width: 900px;
+    margin: auto;
+    color: #666;
+    line-height: 1.6;
+  }
+  .features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 60px;
+  }
+  .feature-box {
+    width: 300px;
+    padding: 20px;
+  }
+
+  .feature-box img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+  }
+  .feature-box h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  .feature-box p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+  }
+  .feature-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    background-color: #f8f8f8;
+    padding: 60px 40px;
+    flex-wrap: wrap;
+  }
+  .feature-box {
+    max-width: 300px;
+    text-align: center;
+  }
+  .feature-box img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+  }
+  .feature-box h3 {
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    font-family: "Georgia", serif;
+  }
+  .feature-box p {
+    font-size: 16px;
+    color: #888;
+    line-height: 1.7;
+  }
+  .tour-section {
+    text-align: center;
+    padding: 100px 40px;
+    max-width: 900px;
+    margin: auto;
+  }
+  .tour-section h2 {
+    font-size: 64px;
+    font-weight: 900;
+    font-family: "Georgia", serif;
+    margin-bottom: 30px;
+  }
+  .tour-section p {
+    font-size: 22px;
+    color: #666;
+    line-height: 1.7;
+    font-family: Arial, sans-serif;
+  }
+  .slider {
+    max-width: 1000px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 60px auto;
+    border-radius: 12px;
+    aspect-ratio: 16 / 9;
+  }
+  .slide img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    margin: auto;
+    display: block;
+  }
+  .slider input {
+    display: none;
+  }
+  .navigation {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+  }
+  .bar {
+    width: 12px;
+    height: 12px;
+    margin: 0 4px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .bar:hover {
+    background: #5bc1b1;
+  }
+  #slide1:checked ~ .slides {
+    transform: translateX(0%);
+  }
+  #slide2:checked ~ .slides {
+    transform: translateX(-100%);
+  }
+  #slide3:checked ~ .slides {
+    transform: translateX(-200%);
+  }
+  #slide4:checked ~ .slides {
+    transform: translateX(-300%);
+  }
+  #slide5:checked ~ .slides {
+    transform: translateX(-400%);
+  }
+  #slide6:checked ~ .slides {
+    transform: translateX(-500%);
+  }
+  @keyframes autoSlide {
+    0% {
+      transform: translateX(0%);
+    }
+    16% {
+      transform: translateX(0%);
+    }
+    17% {
+      transform: translateX(-100%);
+    }
+    33% {
+      transform: translateX(-100%);
+    }
+    34% {
+      transform: translateX(-200%);
+    }
+    50% {
+      transform: translateX(-200%);
+    }
+    51% {
+      transform: translateX(-300%);
+    }
+    67% {
+      transform: translateX(-300%);
+    }
+    68% {
+      transform: translateX(-400%);
+    }
+    83% {
+      transform: translateX(-400%);
+    }
+    84% {
+      transform: translateX(-500%);
+    }
+    100% {
+      transform: translateX(-500%);
+    }
+  }
+  .slides {
+    animation: autoSlide 30s infinite;
+  }
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 8px 12px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    user-select: none;
+  }
+  .arrow.left {
+    left: 15px;
+  }
+  .arrow.right {
+    right: 15px;
+  }
+  .arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  .blog-section {
+    background-color: #5bc1b1;
+    text-align: center;
+    padding: 100px 30px;
+    color: white;
+  }
+  .blog-heading {
+    font-size: 64px;
+    font-weight: 900;
+    font-family: "Georgia", serif;
+    margin-bottom: 30px;
+    color: black;
+  }
+  .blog-subtext {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    font-size: 22px;
+    line-height: 1.7;
+    font-family: "Arial", sans-serif;
+  }
+  .blog-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  .blog-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+    color: #333;
+    text-align: left;
+  }
+  .blog-card:hover {
+    transform: translateY(-10px);
+  }
+  .blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .blog-info {
+    padding: 20px;
+  }
+  .blog-info h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-family: "Georgia", serif;
+  }
+  .blog-date {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .blog-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+  }
+  .testimonial-section {
+    padding: 100px 30px;
+    background-color: #fff;
+    text-align: center;
+  }
+  .testimonial-heading {
+    font-size: 60px;
+    font-weight: 900;
+    font-family: "Georgia", serif;
+    margin-bottom: 60px;
+  }
+  .testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+  .testimonial {
+    max-width: 320px;
+    text-align: left;
+    font-style: italic;
+    color: #333;
+  }
+  .testimonial img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  .testimonial p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color: #444;
+  }
+  .author {
+    display: block;
+    font-size: 16px;
+    color: #888;
+    font-style: normal;
+    font-family: "Arial", sans-serif;
+  }
+  .top-destination-section {
+    padding: 100px 30px;
+    background-color: #fff;
+    text-align: center;
+  }
+  .section-title {
+    font-size: 48px;
+    font-weight: 900;
+    font-family: "Georgia", serif;
+    margin-bottom: 20px;
+  }
+  .section-subtitle {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #556;
+  }
+  .destination-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+  .destination-card {
+    max-width: 250px;
+    text-align: left;
+  }
+  .destination-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+  }
+  .destination-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Georgia", serif;
+    margin-bottom: 8px;
+  }
+  .rating {
+    font-size: 18px;
+    color: #31c48d;
+  }
+  .reviews {
+    display: block;
+    font-size: 16px;
+    color: #999;
+    font-style: italic;
+  }
+  .site-footer {
+    background: #1a1a1a;
+    color: #ccc;
+    padding: 60px 20px 20px;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+  }
+
+  .footer-column {
+    flex: 1 1 220px;
+    margin: 20px;
+  }
+
+  .footer-column h3 {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+  }
+
+  .footer-column p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .subscribe-box {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .subscribe-box input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+    color: #fff;
+    width: 100%;
+  }
+
+  .subscribe-box button {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 20px;
+    margin-left: -30px;
+    cursor: pointer;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    font-size: 14px;
+  }
+
+  .social-icons {
+    margin-top: 10px;
+  }
+
+  .social-icons a {
+    margin: 0 8px;
+    color: #ccc;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .social-icons a:hover {
+    color: #fff;
+  }
+  .fullscreen-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+  }
+  #menu-toggle:checked ~ .fullscreen-menu {
+    opacity: 1;
+    pointer-events: all;
+  }
+</style>
+<div class="image-container">
+  <img
+    src="D:\Santhosh\Coding\HTML and CSS\bg.jpeg"
+    srcset="bg.jpeg 8x"
+    alt="Background"
+    style="filter: brightness(80%)"
+  />
+  <input type="checkbox" id="menu-toggle" hidden />
+  <div class="fullscreen-menu">
+    <ul class="menu-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="hotels.html">Hotels</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+  <div class="hepta-text">Hepta</div>
+  <div class="center-text">Travel & Tours</div>
+  <div class="first-part">A free template by</div>
+  <div class="colorlib">
+    <a
+      href="file:///D:/Santhosh/Coding/HTML%20and%20CSS/Template_design.html#"
+      target=" "
+      style="color: rgba(243, 240, 240, 0.484)"
+      >Colorlib</a
+    >
+  </div>
+  <div class="second-part" style="padding: 20px">Download and share!</div>
+  <button class="button">VISIT COLORLIB</button>
+</div>
+
+<div class="about-section">
+  <div class="about-image">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/images/img_1_long.jpg"
+      alt="Mountain View"
+    />
+  </div>
+  <div class="about-text">
+    <h2>Welcome To Our Website</h2>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts. Separated they live in
+      Bookmarksgrove right at the coast of the Semantics, a large language
+      ocean.
+    </p>
+    <p>
+      A small river named Duden flows by their place and supplies it with the
+      necessary regelialia.
+    </p>
+    <a href="#" class="watch-button"> <span></span> WATCH THE VIDEO </a>
+  </div>
+</div>
+<div class="features-section">
+  <div class="features-header">
+    <h2>Experience Once In Your Life Time</h2>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts. Separated they live in
+      Bookmarksgrove right at the coast of the Semantics, a large language
+      ocean.
+    </p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-box">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/001-breakfast.svg"
+        alt="Good Foods Icon"
+      />
+      <h3>Good Foods</h3>
+      <p>
+        Far far away, behind the word mountains, far from the countries Vokalia
+        and Consonantia, there live the blind texts.
+      </p>
+    </div>
+    <div class="feature-box">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/002-planet-earth.svg"
+        alt="Travel Icon"
+      />
+      <h3>Travel Anywhere</h3>
+      <p>
+        Far far away, behind the word mountains, far from the countries Vokalia
+        and Consonantia, there live the blind texts.
+      </p>
+    </div>
+    <div class="feature-box">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/003-airplane.svg"
+        alt="Airplane Icon"
+      />
+      <h3>Airplane</h3>
+      <p>
+        Far far away, behind the word mountains, far from the countries Vokalia
+        and Consonantia, there live the blind texts.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="feature-section">
+  <div class="feature-box">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/004-beach.svg"
+      alt="Beach Resort"
+    />
+    <h3>Beach Resort</h3>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts.
+    </p>
+  </div>
+  <div class="feature-box">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/005-mountains.svg"
+      alt="Mountain Climbing"
+    />
+    <h3>Mountain Climbing</h3>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts.
+    </p>
+  </div>
+  <div class="feature-box">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/006-hot-air-balloon.svg"
+      alt="Hot Air Balloon"
+    />
+    <h3>Hot Air Balloon</h3>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts.
+    </p>
+  </div>
+</div>
+<div class="tour-section">
+  <h2>
+    International Tour <br />
+    Management.
+  </h2>
+  <p>
+    Far far away, behind the word mountains, far from the countries Vokalia and
+    Consonantia, there live the blind texts. Separated they live in
+    Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+  </p>
+</div>
+<div class="slider">
+  <input type="radio" name="slider" id="slide1" checked />
+  <input type="radio" name="slider" id="slide2" />
+  <input type="radio" name="slider" id="slide3" />
+  <input type="radio" name="slider" id="slide4" />
+  <input type="radio" name="slider" id="slide5" />
+  <input type="radio" name="slider" id="slide6" />
+  <div class="slides">
+    <div class="slide">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/slider-1.jpg"
+        alt="1"
+      />
+    </div>
+    <div class="slide">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/slider-2.jpg"
+        alt="2"
+      />
+    </div>
+    <div class="slide">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/slider-3.jpg"
+        alt="3"
+      />
+    </div>
+    <div class="slide">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/slider-4.jpg"
+        alt="4"
+      />
+    </div>
+    <div class="slide">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/slider-5.jpg"
+        alt="5"
+      />
+    </div>
+    <div class="slide">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/slider-6.jpg"
+        alt="6"
+      />
+    </div>
+  </div>
+  <div class="arrow left">&#10094;</div>
+  <div class="arrow right">&#10095;</div>
+  <div class="navigation">
+    <label for="slide1" class="bar"></label>
+    <label for="slide2" class="bar"></label>
+    <label for="slide3" class="bar"></label>
+    <label for="slide4" class="bar"></label>
+    <label for="slide5" class="bar"></label>
+    <label for="slide6" class="bar"></label>
+  </div>
+</div>
+<div class="blog-section">
+  <h2 class="blog-heading">Recent Blog Post</h2>
+  <p class="blog-subtext">
+    Far far away, behind the word mountains, far from the countries Vokalia and
+    Consonantia, there live the blind texts. Separated they live in
+    Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+  </p>
+
+  <div class="blog-cards">
+    <div class="blog-card">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/img_1.jpg"
+        alt="Blog 1"
+      />
+      <div class="blog-info">
+        <h3>Amazing Place</h3>
+        <span class="blog-date">July 2025</span>
+        <p>
+          Far far away, behind the word mountains, far from the countries
+          Vokalia and Consonantia.
+        </p>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/img_2.jpg"
+        alt="Blog 2"
+      />
+      <div class="blog-info">
+        <h3>Great Journey</h3>
+        <span class="blog-date">June 2025</span>
+        <p>
+          A small river named Duden flows by their place and supplies it with
+          the necessary regelialia.
+        </p>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/img_3.jpg"
+        alt="Blog 3"
+      />
+      <div class="blog-info">
+        <h3>Wanderlust Dreams</h3>
+        <span class="blog-date">May 2025</span>
+        <p>
+          It is a paradisematic country, in which roasted parts of sentences fly
+          into your mouth.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="testimonial-section">
+  <h2 class="testimonial-heading">Happy Customers</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/person_1.jpg"
+        alt="Clare Gupta"
+      />
+      <p>
+        “Far far away, behind the word mountains, far from the countries Vokalia
+        and Consonantia, there live the blind texts. Separated they live in
+        Bookmarksgrove right at the coast of the Semantics, a large language
+        ocean.”
+      </p>
+      <span class="author">— Clare Gupta</span>
+    </div>
+    <div class="testimonial">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/person_2.jpg"
+        alt="Rogie Slater"
+      />
+      <p>
+        “Far far away, behind the word mountains, far from the countries Vokalia
+        and Consonantia, there live the blind texts. Separated they live in
+        Bookmarksgrove right at the coast of the Semantics, a large language
+        ocean.”
+      </p>
+      <span class="author">— Rogie Slater</span>
+    </div>
+    <div class="testimonial">
+      <img
+        src="https://preview.colorlib.com/theme/hepta/images/person_3.jpg"
+        alt="John Doe"
+      />
+      <p>
+        “Far far away, behind the word mountains, far from the countries Vokalia
+        and Consonantia, there live the blind texts. Separated they live in
+        Bookmarksgrove right at the coast of the Semantics, a large language
+        ocean.”
+      </p>
+      <span class="author">— John Doe</span>
+    </div>
+  </div>
+</div>
+<section class="top-destination-section">
+  <div class="container">
+    <h2 class="section-title">Top Destination</h2>
+    <p class="section-subtitle">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. In dolor, iusto
+      doloremque quo odio repudiandae sunt eveniet? Enim facilis laborum
+      voluptate id porro, culpa maiores quis, blanditiis laboriosam alias. Sed.
+    </p>
+    <div class="destination-grid">
+      <div class="destination-card">
+        <img
+          src="https://preview.colorlib.com/theme/hepta/images/img_1.jpg"
+          alt="Food & Wines"
+        />
+        <h3>Food & Wines</h3>
+        <div class="rating">
+          ★★★★☆ <span class="reviews">3,239 reviews</span>
+        </div>
+      </div>
+      <div class="destination-card">
+        <img
+          src="https://preview.colorlib.com/theme/hepta/images/img_2.jpg"
+          alt="Resort & Spa"
+        />
+        <h3>Resort & Spa</h3>
+        <div class="rating">
+          ★★★★☆ <span class="reviews">4,921 reviews</span>
+        </div>
+      </div>
+      <div class="destination-card">
+        <img
+          src="https://preview.colorlib.com/theme/hepta/images/img_3.jpg"
+          alt="Hotel Rooms"
+        />
+        <h3>Hotel Rooms</h3>
+        <div class="rating">
+          ★★★★☆ <span class="reviews">2,112 reviews</span>
+        </div>
+      </div>
+      <div class="destination-card">
+        <img
+          src="https://preview.colorlib.com/theme/hepta/images/img_4.jpg"
+          alt="Mountain Climbing"
+        />
+        <h3>Mountain Climbing</h3>
+        <div class="rating">
+          ★★★★☆ <span class="reviews">6,421 reviews</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-column">
+      <h3>Quick Link</h3>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Rooms</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="#">Our Location</a></li>
+        <li><a href="#">The Hosts</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Restaurant</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Contact Info</h3>
+      <p>
+        <em>Address:</em><br />
+        98 West 21th Street, Suite 721<br />
+        New York NY 10016
+      </p>
+      <p>
+        <em>Phone:</em><br />
+        (+1) 435 3533
+      </p>
+      <p>
+        <em>Email:</em><br />
+        info@yourdomain.com
+      </p>
+    </div>
+    <div class="footer-column">
+      <h3>Subscribe</h3>
+      <p>Sign up for our newsletter</p>
+      <div class="subscribe-box">
+        <input type="email" placeholder="Your email..." />
+        <button><span>&#9993;</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      Copyright © 2025 All rights reserved | This template is made with
+      <span style="color: #ccc">♥</span> by Colorlib
+    </p>
+    <div class="social-icons">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="#"><i class="fa fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+<input type="checkbox" id="menu-toggle" hidden />
+<label for="menu-toggle" class="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>

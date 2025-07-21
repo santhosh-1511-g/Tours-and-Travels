@@ -1,0 +1,965 @@
+<style>
+  .hero {
+    background: url("https://preview.colorlib.com/theme/hepta/images/slider-4.jpg")
+      center/cover no-repeat;
+    height: 90vh;
+    position: relative;
+    color: white;
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 80px;
+    margin-bottom: 20px;
+  }
+
+  .hero-content p {
+    font-size: 25px;
+    font-family: "Arial";
+    letter-spacing: 1px;
+    font-weight: 10px;
+  }
+
+  .topbar {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .logo {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    top: 30%;
+    left: 4%;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
+
+  .menu-icon {
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
+
+  .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 32px;
+    margin: 20px 0;
+  }
+
+  #menu-toggle:checked + .menu-icon + .menu {
+    transform: scaleY(1);
+  }
+
+  @media (min-width: 768px) {
+    .hero-content h1 {
+      font-size: 72px;
+    }
+
+    .menu a {
+      font-size: 28px;
+    }
+  }
+  .features-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 80px 50px;
+    background-color: #fff;
+    text-align: center;
+  }
+
+  .feature-box img {
+    width: 80px;
+    margin-bottom: 20px;
+  }
+
+  .feature-box h3 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-family: serif;
+  }
+
+  .feature-box p {
+    color: #6c757d;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .room-section {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 50px;
+    background: #f8f9fa;
+    gap: 40px;
+  }
+
+  .room-image {
+    flex: 1;
+  }
+
+  .room-image img {
+    width: 100%;
+    height: 600;
+    border-radius: 5px;
+  }
+
+  .room-content {
+    flex: 1;
+  }
+
+  .room-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-family: serif;
+  }
+
+  .room-content p {
+    font-size: 18px;
+    color: #6c757d;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .learn-more {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 2px solid #5bc1b1;
+    color: #333;
+    text-decoration: none;
+    font-weight: 200;
+    letter-spacing: 3px;
+    transition: background 0.3s, color 0.3s;
+    font-family: "Arial";
+  }
+
+  .learn-more:hover {
+    background: #5bc1b1;
+    color: white;
+  }
+
+  /* Mobile responsive: stack vertically */
+  @media (max-width: 768px) {
+    .room-section {
+      flex-direction: column;
+    }
+
+    .room-content,
+    .room-image {
+      width: 100%;
+    }
+  }
+  .presidential-room-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 80px;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  .presidential-text {
+    max-width: 50%;
+    padding-right: 40px;
+  }
+
+  .presidential-text h1 {
+    font-size: 43px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: serif;
+  }
+
+  .presidential-text p {
+    font-size: 20px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 15px;
+  }
+
+  .presidential-text .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 2px solid #68c2c2;
+    background-color: transparent;
+    color: #333;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .presidential-text .btn:hover {
+    background-color: #68c2c2;
+    color: white;
+  }
+
+  .presidential-image {
+    max-width: 50%;
+  }
+
+  .presidential-image img {
+    width: 100%;
+    height: 600;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .presidential-room-section {
+      flex-direction: column;
+      padding: 40px 20px;
+    }
+
+    .presidential-text,
+    .presidential-image {
+      max-width: 100%;
+      text-align: center;
+      padding: 0;
+    }
+
+    .presidential-text h1 {
+      font-size: 36px;
+    }
+
+    .presidential-text {
+      margin-bottom: 30px;
+    }
+  }
+  .hotel-gallery-section {
+    text-align: center;
+    padding: 80px 40px;
+    font-family: "Times";
+    background-color: #fff;
+  }
+
+  .hotel-gallery-section h1 {
+    font-size: 70px;
+    font-weight: "bold";
+    margin-bottom: 30px;
+  }
+
+  .hotel-gallery-section p {
+    font-size: 20px;
+    color: #555;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .hotel-gallery-section h1 {
+      font-size: 40px;
+    }
+
+    .hotel-gallery-section p {
+      font-size: 18px;
+      padding: 0 10px;
+    }
+  }
+  .css-slider-wrapper {
+    max-width: 900px;
+    margin: 60px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .css-slider {
+    display: flex;
+    width: 600%; /* 6 images */
+    transition: transform 0.5s ease-in-out; /* this controls slide speed */
+  }
+
+  .css-slider img {
+    width: 100%;
+    height: 400px;
+    object-fit: contain; /* <--- change this */
+    background-color: #f8f8f8; /* optional padding color */
+    flex-shrink: 0;
+    border-radius: 8px;
+  }
+
+  input[name="slider"] {
+    display: none;
+  }
+
+  .slider-nav {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .slider-nav label {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 5px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  #slide1:checked ~ .css-slider {
+    transform: translateX(0%);
+  }
+
+  #slide2:checked ~ .css-slider {
+    transform: translateX(-100%);
+  }
+
+  #slide3:checked ~ .css-slider {
+    transform: translateX(-200%);
+  }
+
+  #slide4:checked ~ .css-slider {
+    transform: translateX(-300%);
+  }
+
+  #slide5:checked ~ .css-slider {
+    transform: translateX(-400%);
+  }
+
+  #slide6:checked ~ .css-slider {
+    transform: translateX(-500%);
+  }
+
+  #slide1:checked ~ .slider-nav label[for="slide1"],
+  #slide2:checked ~ .slider-nav label[for="slide2"],
+  #slide3:checked ~ .slider-nav label[for="slide3"],
+  #slide4:checked ~ .slider-nav label[for="slide4"],
+  #slide5:checked ~ .slider-nav label[for="slide5"],
+  #slide6:checked ~ .slider-nav label[for="slide6"] {
+    background: #333;
+  }
+
+  @media (max-width: 768px) {
+    .css-slider img {
+      height: 250px; /* smaller height for mobile */
+    }
+  }
+  /* Hide all arrows by default */
+  .slider-arrows .arrow-group {
+    display: none;
+  }
+
+  /* Show only the matching arrow group based on selected slide */
+  #slide1:checked ~ .slider-arrows .s1,
+  #slide2:checked ~ .slider-arrows .s2,
+  #slide3:checked ~ .slider-arrows .s3,
+  #slide4:checked ~ .slider-arrows .s4,
+  #slide5:checked ~ .slider-arrows .s5,
+  #slide6:checked ~ .slider-arrows .s6 {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .slider-arrows label {
+    font-size: 32px;
+    color: #333;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background 0.3s;
+  }
+
+  .slider-arrows label:hover {
+    background: #444;
+    color: #fff;
+  }
+  .hotel-features {
+    background-color: #f0f4f7;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .hotel-features .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hotel-features h2 {
+    font-size: 70px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .hotel-features p {
+    color: #5a6670;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 auto 40px;
+    max-width: 700px;
+  }
+
+  .features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .feature-card {
+    background-color: #fff;
+    width: 100%;
+    max-width: 350px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .feature-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+  }
+
+  .feature-card h3 {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 20px;
+    text-align: left;
+  }
+  .site-footer {
+    background: #1a1a1a;
+    color: #ccc;
+    padding: 60px 20px 20px;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+  }
+
+  .footer-column {
+    flex: 1 1 220px;
+    margin: 20px;
+  }
+
+  .footer-column h3 {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+  }
+
+  .footer-column p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .subscribe-box {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .subscribe-box input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+    color: #fff;
+    width: 100%;
+  }
+
+  .subscribe-box button {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 20px;
+    margin-left: -30px;
+    cursor: pointer;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    font-size: 14px;
+  }
+
+  .social-icons {
+    margin-top: 10px;
+  }
+
+  .social-icons a {
+    margin: 0 8px;
+    color: #ccc;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .social-icons a:hover {
+    color: #fff;
+  }
+  .hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #f9f9f9;
+    transition: background 0.3s ease;
+  }
+
+  /* Turn white when open */
+  #menu-toggle:checked + .hamburger span {
+    background: white;
+  }
+
+  /* Fullscreen Menu */
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: white; /* White background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+    z-index: 1000;
+  }
+
+  .menu a {
+    color: black; /* Default black text */
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 15px 0;
+    transition: all 0.3s;
+    font-family: "Georgia", serif;
+  }
+
+  .menu a.active {
+    color: #5bc1b1; /* Teal color for the active item */
+  }
+
+  .menu a:hover {
+    color: #5bc1b1; /* Optional: teal on hover */
+  }
+
+  /* Show menu when checked */
+  #menu-toggle:checked ~ .menu {
+    transform: scaleY(1);
+  }
+  .menu-close {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    font-size: 36px;
+    color: black;
+    z-index: 1100;
+    cursor: pointer;
+    display: none;
+  }
+
+  /* Show close button only when menu is active */
+  #menu-toggle:checked ~ .menu-close {
+    display: block;
+  }
+</style>
+<div class="topbar">
+  <div class="logo">Hepta</div>
+  <input type="checkbox" id="menu-toggle" hidden />
+  <label for="menu-toggle" class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <nav class="menu">
+    <a href="Template_design.html">Home</a>
+    <a href="hotel.html" class="active">Hotels</a>
+    <a href="#">About Us</a>
+    <a href="#">Gallery</a>
+    <a href="#">News</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- Add this label AFTER the menu -->
+  <label for="menu-toggle" class="menu-close">✕</label>
+</div>
+
+<!-- Hero section -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Our Hotel</h1>
+    <p>A free template by Colorlib. Download and share!</p>
+  </div>
+</div>
+<!-- Features Section -->
+<div class="features-section">
+  <div class="feature-box">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/001-breakfast.svg"
+      alt="Good Foods"
+    />
+    <h3>Good Foods</h3>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts.
+    </p>
+  </div>
+  <div class="feature-box">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/002-planet-earth.svg"
+      alt="Travel Anywhere"
+    />
+    <h3>Travel Anywhere</h3>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts.
+    </p>
+  </div>
+  <div class="feature-box">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/003-airplane.svg"
+      alt="Airplane"
+    />
+    <h3>Airplane</h3>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts.
+    </p>
+  </div>
+  <div class="feature-box">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/004-beach.svg"
+      alt="Beach Resort"
+    />
+    <h3>Beach Resort</h3>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts.
+    </p>
+  </div>
+  <div class="feature-box">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/005-mountains.svg"
+      alt="Mountain Climbing"
+    />
+    <h3>Mountain Climbing</h3>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts.
+    </p>
+  </div>
+  <div class="feature-box">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/fonts/flaticon/svg/006-hot-air-balloon.svg"
+      alt="Hot Air Balloon"
+    />
+    <h3>Hot Air Balloon</h3>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts.
+    </p>
+  </div>
+</div>
+<!-- Family Room Section -->
+<!-- Family Room Section -->
+<div class="room-section">
+  <div class="room-image">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/images/slider-1.jpg"
+      alt="Family Room"
+    />
+  </div>
+  <div class="room-content">
+    <h2>Family Room</h2>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts. Separated they live in
+      Bookmarksgrove right at the coast of the Semantics, a large language
+      ocean.
+    </p>
+    <p>
+      A small river named Duden flows by their place and supplies it with the
+      necessary regelialia.
+    </p>
+    <a href="#" class="learn-more">LEARN MORE</a>
+  </div>
+</div>
+<div class="presidential-room-section">
+  <div class="presidential-text">
+    <h1>Presidential Room</h1>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts. Separated they live in
+      Bookmarksgrove right at the coast of the Semantics, a large language
+      ocean.
+    </p>
+    <p>
+      A small river named Duden flows by their place and supplies it with the
+      necessary regelialia.
+    </p>
+    <a href="#" class="btn">Learn More</a>
+  </div>
+  <div class="presidential-image">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/images/slider-2.jpg"
+      alt="Presidential Room View"
+    />
+  </div>
+</div>
+<div class="hotel-gallery-section">
+  <h1>Hotel Gallery</h1>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. In dolor, iusto
+    doloremque quo odio repudiandae sunt eveniet? Enim facilis laborum voluptate
+    id porro, culpa maiores quis, blanditiis laboriosam alias. Sed.
+  </p>
+</div>
+
+<div class="css-slider-wrapper" style="position: relative">
+  <!-- Radio buttons for 6 slides -->
+  <input type="radio" name="slider" id="slide1" checked />
+  <input type="radio" name="slider" id="slide2" />
+  <input type="radio" name="slider" id="slide3" />
+  <input type="radio" name="slider" id="slide4" />
+  <input type="radio" name="slider" id="slide5" />
+  <input type="radio" name="slider" id="slide6" />
+
+  <!-- Slider container -->
+  <div class="css-slider">
+    <img
+      src="https://preview.colorlib.com/theme/hepta/images/slider-1.jpg"
+      alt="Slide 1"
+    />
+    <img
+      src="https://preview.colorlib.com/theme/hepta/images/slider-2.jpg"
+      alt="Slide 2"
+    />
+    <img
+      src="https://preview.colorlib.com/theme/hepta/images/slider-3.jpg"
+      alt="Slide 3"
+    />
+    <img
+      src="https://preview.colorlib.com/theme/hepta/images/slider-4.jpg"
+      alt="Slide 4"
+    />
+    <img
+      src="https://preview.colorlib.com/theme/hepta/images/slider-5.jpg"
+      alt="Slide 5"
+    />
+    <img
+      src="https://preview.colorlib.com/theme/hepta/images/slider-6.jpg"
+      alt="Slide 6"
+    />
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="slider-nav">
+    <label for="slide1"></label>
+    <label for="slide2"></label>
+    <label for="slide3"></label>
+    <label for="slide4"></label>
+    <label for="slide5"></label>
+    <label for="slide6"></label>
+  </div>
+  <div class="slider-arrows">
+    <div class="arrow-group s1">
+      <label for="slide6">&#10094;</label>
+      <label for="slide2">&#10095;</label>
+    </div>
+    <div class="arrow-group s2">
+      <label for="slide1">&#10094;</label>
+      <label for="slide3">&#10095;</label>
+    </div>
+    <div class="arrow-group s3">
+      <label for="slide2">&#10094;</label>
+      <label for="slide4">&#10095;</label>
+    </div>
+    <div class="arrow-group s4">
+      <label for="slide3">&#10094;</label>
+      <label for="slide5">&#10095;</label>
+    </div>
+    <div class="arrow-group s5">
+      <label for="slide4">&#10094;</label>
+      <label for="slide6">&#10095;</label>
+    </div>
+    <div class="arrow-group s6">
+      <label for="slide5">&#10094;</label>
+      <label for="slide1">&#10095;</label>
+    </div>
+  </div>
+</div>
+<section class="hotel-features">
+  <div class="container">
+    <h2>More Hotel Features</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. In dolor, iusto
+      doloremque quo odio repudiandae sunt eveniet? Enim facilis laborum
+      voluptate id porro, culpa maiores quis, blanditiis laboriosam alias. Sed.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <img
+          src="https://preview.colorlib.com/theme/hepta/images/img_1.jpg"
+          alt="Feature 1"
+        />
+        <h3>Five Reasons to Stay at Villa Resort</h3>
+      </div>
+      <div class="feature-card">
+        <img
+          src="https://preview.colorlib.com/theme/hepta/images/img_2.jpg"
+          alt="Feature 2"
+        />
+        <h3>Five Reasons to Stay at Villa Resort</h3>
+      </div>
+      <div class="feature-card">
+        <img
+          src="https://preview.colorlib.com/theme/hepta/images/img_3.jpg"
+          alt="Feature 3"
+        />
+        <h3>Five Reasons to Stay at Villa Resort</h3>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-column">
+      <h3>Quick Link</h3>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Rooms</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="#">Our Location</a></li>
+        <li><a href="#">The Hosts</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Restaurant</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Contact Info</h3>
+      <p>
+        <em>Address:</em><br />
+        98 West 21th Street, Suite 721<br />
+        New York NY 10016
+      </p>
+      <p>
+        <em>Phone:</em><br />
+        (+1) 435 3533
+      </p>
+      <p>
+        <em>Email:</em><br />
+        info@yourdomain.com
+      </p>
+    </div>
+    <div class="footer-column">
+      <h3>Subscribe</h3>
+      <p>Sign up for our newsletter</p>
+      <div class="subscribe-box">
+        <input type="email" placeholder="Your email..." />
+        <button><span>&#9993;</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      Copyright © 2025 All rights reserved | This template is made with
+      <span style="color: #ccc">♥</span> by Colorlib
+    </p>
+    <div class="social-icons">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="#"><i class="fa fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
